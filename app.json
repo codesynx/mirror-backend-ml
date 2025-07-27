@@ -1,0 +1,35 @@
+{
+  "name": "Cosmolabs Backend",
+  "description": "Django backend for Cosmolabs application with ML capabilities",
+  "image": "heroku/python",
+  "repository": "https://github.com/your-username/cosmolabs-backend",
+  "keywords": ["python", "django", "machine-learning", "tensorflow"],
+  "env": {
+    "SECRET_KEY": {
+      "description": "Django secret key for cryptographic signing",
+      "generator": "secret"
+    },
+    "DEBUG": {
+      "description": "Enable debug mode (set to False for production)",
+      "value": "False"
+    },
+    "GEMINI_API_KEY": {
+      "description": "Google Gemini API key for AI features",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "python manage.py migrate"
+  }
+}
